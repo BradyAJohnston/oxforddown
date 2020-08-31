@@ -27,7 +27,7 @@
 % This one will format for PDF output (ie equal margins, no extra blank pages):
 %\documentclass[a4paper,nobind]{templates/ociamthesis}
 %UL 2 Dec 2018: pass this in from YAML
-\documentclass[a4paper, $if(page-layout)$$page-layout$$endif$]{templates/ociamthesis}
+\documentclass[a4paper, nobind]{templates/ociamthesis}
 
 
 % UL 30 Nov 2018 pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file
@@ -35,18 +35,6 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
  
 % UL 1 Dec 2018, fix to include code in shaded environments
-$if(highlighting-macros)$
-$highlighting-macros$
-%UL 2 Dec 2018 add a bit of white space before and after code blocks
-\renewenvironment{Shaded}
-{
-  \vspace{4pt}%
-  \begin{snugshade}%
-}{%
-  \end{snugshade}%
-  \vspace{4pt}%
-}
-$endif$
 
 %UL 2 Dec 2018 reduce whitespace around verbatim environments
 \usepackage{etoolbox}
@@ -58,23 +46,19 @@ $endif$
 \usepackage[normalem]{ulem}
 
 %UL 15 Oct 2019, enable link highlighting to be turned off from YAML
-\usepackage[colorlinks=false,pdfpagelabels,hidelinks=$hidelinks$]{hyperref}
+\usepackage[colorlinks=false,pdfpagelabels,hidelinks=true]{hyperref}
 
 %%%%% SELECT YOUR DRAFT OPTIONS
 % Three options going on here; use in any combination.  But remember to turn the first two off before
 % generating a PDF to send to the printer!
 
 % This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
-$if(draft)$
 \fancyfoot[C]{\emph{DRAFT Printed on \today}}
-$endif$
 
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
 % paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
 % your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
-$if(params.corrections)$
 \correctionstrue
-$endif$
 
 %%%%% BIBLIOGRAPHY SETUP
 % Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
@@ -92,19 +76,14 @@ $endif$
 % \newcommand*{\bibtitle}{Works Cited}
 
 %UL 3 Dec 2018: set this from YAML in index.Rmd
-$if(bib-humanities)$
-\usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=$if(doi-in-bibliography)$$doi-in-bibliography$$else$false$endif$, isbn=false, uniquename=false]{biblatex}
-\newcommand*{\bibtitle}{$bibliography-heading-in-pdf$}
-$else$
-\usepackage[style=numeric-comp, sorting=none, backend=biber, doi=$doi-in-bibliography$, isbn=false]{biblatex}
-\newcommand*{\bibtitle}{$bibliography-heading-in-pdf$}
-$endif$
+\usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false]{biblatex}
+\newcommand*{\bibtitle}{Works Cited}
 
 % This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
 \renewcommand*{\bibfont}{\raggedright\small}
 
 % Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
-\addbibresource{$bibliography$}
+\addbibresource{references.bib}
 
 
 % Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
@@ -113,10 +92,16 @@ $endif$
 
 %%%%% THESIS / TITLE PAGE INFORMATION
 % Everybody needs to complete the following:
-\title{$title$}
-\author{$author$}
-\college{$college$}
-\supervisors{$supervisors$}
+\title{Investigating the use of designer pentatricopeptide repeat proteins as molecular tools.}
+\author{Brady Addison Johnston\\
+\small Bachelor of Science (Hons)}
+\college{School of Molecular Sciences}
+\supervisors{\large
+
+Supervisors: \linebreak
+Prof Charlie Bond \linebreak
+Dr.~Jason Schmidberger \linebreak 
+Prof Ian Small}
 
 % Master's candidates who require the alternate title page (with candidate number and word count)
 % must also un-comment and complete the following three lines:
@@ -127,9 +112,9 @@ $endif$
 % Uncomment the following line if your degree also includes exams (eg most masters):
 %\renewcommand{\submittedtext}{Submitted in partial completion of the}
 % Your full degree name.  (But remember that DPhils aren't "in" anything.  They're just DPhils.)
-\degree{$degree$}
+\degree{Doctor of Philosophy in Biochemistry}
 % Term and year of submission, or date if your board requires (eg most masters)
-\degreedate{$degreedate$}
+\degreedate{December 2020}
 
 
 %%%%% YOUR OWN PERSONAL MACROS
@@ -175,17 +160,12 @@ $endif$
 % The level that gets a number:
 \setcounter{secnumdepth}{2}
 % The level that shows up in the ToC:
-\setcounter{tocdepth}{$toc-depth$}
+\setcounter{tocdepth}{2}
 
 
 %%%%% ABSTRACT SEPARATE
 % This is used to create the separate, one-page abstract that you are required to hand into the Exam
 % Schools.  You can comment it out to generate a PDF for printing or whatnot.
-$if(abstractseparate)$
-\begin{abstractseparate}
-  $abstract$
-\end{abstractseparate}
-$endif$
 
 % JEM: Pages are roman numbered from here, though page numbers are invisible until ToC.  This is in
 % keeping with most typesetting conventions.
@@ -195,38 +175,42 @@ $endif$
 \maketitle
 
 %%%%% DEDICATION -- If you'd like one, un-comment the following.
-$if(dedication)$
 \begin{dedication}
-  $dedication$
+  Dedicate this thesis to someone here.
 \end{dedication}
-$endif$
 
 %%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
-$if(acknowledgements)$
 \begin{acknowledgements}
- 	$acknowledgements$
+ 	This is where you will normally thank your advisor, colleagues, family and friends, as well as funding and institutional support. In our case, we will give our praises to the people who developed the ideas and tools that allow us to push open science a little step forward by writing plain-text, transparent, and reproducible theses in R Markdown.
+
+  We must be grateful to John Gruber for inventing the original version of Markdown, to John MacFarlane for creating Pandoc (\url{http://pandoc.org}) which converts Markdown to a large number of output formats, and to Yihui Xie for creating \texttt{knitr} which introduced R Markdown as a way of embedding code in Markdown documents, and \texttt{bookdown} which added tools for technical and longer-form writing.
+
+  Special thanks to \href{http://chester.rbind.io}{Chester Ismay}, who created the \texttt{thesisdown} package that helped many a PhD student write their theses in R Markdown. And a very special tahnks to John McManigle, whose adaption of Sam Evans' adaptation of Keith Gillow's original maths template for writing an Oxford University DPhil thesis in \LaTeX~provided the template that I adapted for R Markdown.
+
+  Finally, profuse thanks to JJ Allaire, the founder and CEO of \href{http://rstudio.com}{RStudio}, and Hadley Wickham, the mastermind of the tidyverse without whom we'd all just given up and done data science in Python instead. Thanks for making data science easier, more accessible, and more fun for us all.
+
+  \begin{flushright}
+  Ulrik Lyngs \\
+  Linacre College, Oxford \\
+  2 December 2018
+  \end{flushright}
 \end{acknowledgements}
-$endif$
 
 
 %%%%% ABSTRACT -- Nothing to do here except comment out if you don't want it.
 \begin{abstract}
-	$abstract$
+	This \emph{R Markdown} template is for writing an Oxford University thesis. The template is built using Yihui Xie's \texttt{bookdown} package, with heavy inspiration from Chester Ismay's \texttt{thesisdown} and the \texttt{OxThesis} \LaTeX~template (most recently adapted by John McManigle).
+
+ This template's sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from \href{https://ulyngs.github.io/rmarkdown-workshop-2019/}{this R Markdown workshop}.
+
+ Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
 \end{abstract}
 
 %%%%% MINI TABLES
 % This lays the groundwork for per-chapter, mini tables of contents.  Comment the following line
 % (and remove \minitoc from the chapter files) if you don't want this.  Un-comment either of the
 % next two lines if you want a per-chapter list of figures or tables.
-$if(mini-toc)$
   \dominitoc % include a mini table of contents
-$endif$
-$if(mini-lof)$
-  \dominilof  % include a mini list of figures
-$endif$
-$if(mini-lot)$
-  \dominilot  % include a mini list of tables
-$endif$
 
 % This aligns the bottom of the text of each page.  It generally makes things look better.
 \flushbottom
@@ -234,24 +218,18 @@ $endif$
 % This is where the whole-document ToC appears:
 \tableofcontents
 
-$if(lof)$
 \listoffigures
 	\mtcaddchapter
   	% \mtcaddchapter is needed when adding a non-chapter (but chapter-like) entity to avoid confusing minitoc
-$endif$
 
 % Uncomment to generate a list of tables:
-$if(lot)$
 \listoftables
   \mtcaddchapter
-$endif$
 %%%%% LIST OF ABBREVIATIONS
 % This example includes a list of abbreviations.  Look at text/abbreviations.tex to see how that file is
 % formatted.  The template can handle any kind of list though, so this might be a good place for a
 % glossary, etc.
-$if(abbreviations)$
-\include{$abbreviations$}
-$endif$
+\include{front-and-back-matter/abbreviations}
 
 % The Roman pages, like the Roman Empire, must come to its inevitable close.
 \end{romanpages}
@@ -261,7 +239,37 @@ $endif$
 \flushbottom
 
 % all your chapters and appendices will appear here
-$body$
+\hypertarget{introduction}{%
+\chapter*{Introduction}\label{introduction}}
+\addcontentsline{toc}{chapter}{Introduction}
+
+\adjustmtc
+
+Welcome to the \emph{R Markdown} Oxford University thesis template.
+This sample content is adapted from \href{https://github.com/ismayc/thesisdown}{\texttt{thesisdown}} and the formatting of PDF output is adapted from the \href{https://github.com/mcmanigle/OxThesis}{OxThesis LaTeX template}.
+Hopefully, writing your thesis in R Markdown will provide a nicer interface to the OxThesis template if you haven't used TeX or LaTeX before.
+More importantly, using \emph{R Markdown} allows you to embed chunks of code directly into your thesis and generate plots and tables directly from the underlying data, avoiding copy-paste steps.
+This will get you into the habit of doing reproducible research, which benefits you long-term as a researcher, but also will greatly help anyone that is trying to reproduce or build upon your results down the road.
+
+Using LaTeX together with \emph{Markdown} is more consistent than the output of a word processor, much less prone to corruption or crashing, and the resulting file is smaller than a Word file.
+While you may never have had problems using Word in the past, your thesis is likely going to be about twice as large and complex as anything you've written before, taxing Word's capabilities.
+
+\hypertarget{why-use-it}{%
+\section*{Why use it?}\label{why-use-it}}
+\addcontentsline{toc}{section}{Why use it?}
+
+\emph{R Markdown} creates a simple and straightforward way to interface with the beauty of LaTeX.
+Packages have been written in \textbf{R} to work directly with LaTeX to produce nicely formatting tables and paragraphs.
+In addition to creating a user friendly interface to LaTeX, \emph{R Markdown} allows you to read in your data, analyze it and to visualize it using \textbf{R}, \textbf{Python} or other languages, and provide documentation and commentary on the results of your project.\\
+Further, it allows for results of code output to be passed inline to the commentary of your results.
+You'll see more on this later, focusing on \textbf{R}. If you are more into \textbf{Python} or something else, you can still use \emph{R Markdown} - see \href{https://bookdown.org/yihui/rmarkdown/language-engines.html}{`Other language engines'} in Yihui Xie's \href{https://bookdown.org/yihui/rmarkdown/language-engines.html}{\emph{R Markdown: The Definitive Guide}}.
+
+\hypertarget{who-should-use-it}{%
+\section*{Who should use it?}\label{who-should-use-it}}
+\addcontentsline{toc}{section}{Who should use it?}
+
+Anyone who needs to use data analysis, math, tables, a lot of figures, complex cross-references, or who just cares about reproducibility in research can benefit from using \emph{R Markdown}.
+If you are working in `softer' fields, the user-friendly nature of the \emph{Markdown} syntax and its ability to keep track of and easily include figures, automatically generate a table of contents, index, references, table of figures, etc. should still make it of great benefit to your thesis project.
 
 
 %%%%% REFERENCES

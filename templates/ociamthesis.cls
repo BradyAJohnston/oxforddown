@@ -1,5 +1,5 @@
 % ociamthesis
-% 
+%
 % Originally by Keith A. Gillow (gillow@maths.ox.ac.uk), 1997
 % Modified by Sam Evans (sam@samuelevansresearch.org), 2007
 % Modified by John McManigle (john@oxfordechoes.com), 2015
@@ -34,8 +34,8 @@
 \newlength{\frontmatterbaselineskip}
 \newlength{\textbaselineskip}
 % UL 2 Dec 2018: make it possible to customise line and paragraph spacing in separate abstract page
-\newlength{\abstractseparatelineskip}  
-\newlength{\abstractseparateparskip}  
+\newlength{\abstractseparatelineskip}
+\newlength{\abstractseparateparskip}
 
 \setlength{\singlebaselineskip}{\baselineskip}
 \setlength{\frontmatterbaselineskip}{17pt plus1pt minus1pt}
@@ -44,7 +44,8 @@
 \setlength{\abstractseparateparskip}{0pt plus 1pt}
 
 
-\newcommand{\submittedtext}{{A thesis submitted for the degree of}}
+\newcommand{\submittedtext}{{This thesis is presented in fulfilment \\ of the requirements for the degree of }}
+\newcommand{\postAmbleText}{{ of The University of Western Australia}}
 \usepackage{varwidth}
 \newcommand{\originalitytext}{%
    \rule[-2mm]{1pt}{7mm}\hspace{-1pt}%
@@ -63,8 +64,10 @@
 \def\degreedate#1{\gdef\@degreedate{#1}}
 % The full (unabbreviated) name of the degree
 \def\degree#1{\gdef\@degree{#1}}
-% The name of your Oxford college (eg Christ Church, Pembroke)
+% The name of your School at UWA (eg School of Molecular Sciences, Business School)
 \def\college#1{\gdef\@college{#1}}
+% The names of your supervisors, need to include own formatting.
+\def\supervisors{\gdef\@supervisors}
 % Your candidate number (ie for master's submissions)
 \def\candidateno#1{\gdef\@candidateno{#1}}
 % Your word count (for master's submissions)
@@ -78,7 +81,7 @@
 % CRESTS
 %
 
-\def\crest{{\includegraphics{figures/beltcrest.pdf}}}
+\def\crest{{\includegraphics[height=4cm]{figures/uwacrestcropped.pdf}}}
 
 
 %
@@ -86,23 +89,23 @@
 %
 
 \ifmc@nobind
-\usepackage[includehead,hmargin={3.1cm, 3.1cm}, vmargin={2.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
+\usepackage[includehead,hmargin={2cm, 2cm}, vmargin={2.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
 \else
-\usepackage[includehead,hmargin={3.6cm, 2.6cm}, vmargin={2.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
+\usepackage[includehead,hmargin={4cm, 2cm}, vmargin={2.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
 \fi
 
 \usepackage{xcolor}
-\usepackage{graphicx} 
+\usepackage{graphicx}
 
 \usepackage{fancyhdr}
 \setlength{\headheight}{15pt}
 \fancyhf{} % clear the header and footers
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{\thechapter. #1}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection. #1}} 
+\renewcommand{\sectionmark}[1]{\markright{\thesection. #1}}
 \renewcommand{\headrulewidth}{0pt}
-\fancyhead[LO]{\emph{\leftmark}} 
-\fancyhead[RE]{\emph{\rightmark}} 
+\fancyhead[LO]{\emph{\leftmark}}
+\fancyhead[RE]{\emph{\rightmark}}
 \fancyhead[RO,LE]{\emph{\thepage}}
 
 \fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\emph{\thepage}}}
@@ -114,8 +117,8 @@
    \newpage
    \if@twocolumn\hbox{}\newpage
    \fi
-   \fancyhead[LO]{\emph{\leftmark}} 
-   \fancyhead[RE]{\emph{\rightmark}} 
+   \fancyhead[LO]{\emph{\leftmark}}
+   \fancyhead[RE]{\emph{\rightmark}}
    \fi\fi}
 
 
@@ -125,39 +128,39 @@
 \usepackage{amssymb}
 \usepackage{textcomp}
 
-\usepackage{longtable} 
+\usepackage{longtable}
 	% Allows tables to span multiple pages (this package must be called before hyperref)
 
-\usepackage[font=small,labelfont=bf]{caption} 
+\usepackage[font=small,labelfont=bf]{caption}
 	% Nicer captions
 
-\usepackage{multicol,multirow,array} 
+\usepackage{multicol,multirow,array}
 	% Used to make multiple columns for the indices and for creating columns that span multiple rows in tables
 
-\usepackage{rotating} 
+\usepackage{rotating}
 	% To allow tables in landscape mode
 
-\usepackage{booktabs} 
+\usepackage{booktabs}
 	% For better looking tables
 
-\usepackage{pdfpages} 
+\usepackage{pdfpages}
 	% Allows multi-page pdfs to be inserted as graphics
 
 \usepackage{xfrac}
 
-%\usepackage{enumerate} 
+%\usepackage{enumerate}
 	% Allows different numbering styles for Lists
 	% to use:
-	% \begin{enumerate}[x] 
-		% \item text 
-	% \end{enumerate} 
+	% \begin{enumerate}[x]
+		% \item text
+	% \end{enumerate}
 	% where x is:
 	% A	uppercase letters (as produced by \Alph)
 	% a	lowercase letters (as produced by \alph)
 	% I	uppercase roman numerals (as produced by \Roman)
 	% i	lowercase roman numerals (as produced by \roman)
 	% 1	arabic numbers (as produced by \arabic)
-	
+
 % JEM the following package allows changing spacing in lists (for acknowledgements)
 \usepackage{enumitem}
 
@@ -165,19 +168,19 @@
 \usepackage{dcolumn}
 \newcolumntype{d}[3]{D{.}{\cdot}{#1} }
 
-\usepackage{appendix} 
+\usepackage{appendix}
 	% For helping format appendicies
-\usepackage{notoccite} 
-	% To format the bibliography	
+\usepackage{notoccite}
+	% To format the bibliography
 
 
-%\usepackage[colorlinks=false,pdfpagelabels]{hyperref} 
+%\usepackage[colorlinks=false,pdfpagelabels]{hyperref}
 	% for linking between references, figures, TOC, etc in the pdf document
 
-\usepackage[nohints,tight]{minitoc} 
-	\setcounter{minitocdepth}{2} 
+\usepackage[nohints,tight]{minitoc}
+	\setcounter{minitocdepth}{2}
 	% Generates mini tables of contents per chapter
-	
+
 % JEM: The following fixes minitoc to not be multiple-spaced.
 \let\oldmtc@verse\mtc@verse
 \renewcommand{\mtc@verse}[1]{\oldmtc@verse{#1}\setlength{\baselineskip}{\z@}}
@@ -187,7 +190,7 @@
 % Environments
 %
 
-% This macro define an environment for front matter that is always 
+% This macro define an environment for front matter that is always
 % single column even in a double-column document.
 
 \newenvironment{alwayssingle}{%
@@ -215,7 +218,7 @@
 {\large \vspace*{1ex}
     {Word count: {\@wordcount} \par}
 \vspace*{4ex}
-    {{\submittedtext} \par}
+    {{\submittedtext} {\@degree} {\postAmbleText}}
 \vspace*{1ex}
     {\it {\@degree} \par}
 \vspace*{6ex}
@@ -225,19 +228,21 @@
   \end{center}
 \else
   \begin{center}
-    { \LARGE {\bfseries {\@title}} \par}
-{\large \vspace*{30mm} {\crest \par} \vspace*{25mm}}
-    {{\Large \@author} \par}
-{\large \vspace*{1ex}
+    {\huge {\bfseries {\@title}} \par}
+    \vspace*{10mm}
+    {{\Large \textbf  \@author} \par}
+  \vspace*{10mm}
+    {{\large \submittedtext \par}}
+  {\large \textbf {\@degree} \par}
+{\large \vspace*{10mm} {\crest } \vspace*{10mm}}
+{\textbf {\@supervisors} \par}
+{\large \vspace*{2ex}
     {{\@college} \par}
 \vspace*{1ex}
-    {University of Oxford \par}
+    {The University of Western Australia \par}
 \vspace*{20mm}
-    {{\submittedtext} \par}
-\vspace*{1ex}
-    {\it {\@degree} \par}
-\vspace*{2ex}
-    {\@degreedate}}
+
+    {\textbf \@degreedate}}
   \end{center}
 \fi
   \vfill\null
@@ -259,7 +264,7 @@
 
 % ACKNOWLEDGEMENTS
 %
-% The acknowledgements environment puts a large, bold, centered 
+% The acknowledgements environment puts a large, bold, centered
 % "Acknowledgements" label at the top of the page. The acknowledgements
 % themselves appear in a quote environment, i.e. tabbed in at both sides, and
 % on its own page.
@@ -302,7 +307,7 @@
     {Thesis word count: {\@wordcount} \par}
 \else
     {{\@college} \par}
-    {University of Oxford \par}
+    {The University of Western Australia \par}
 \fi
 \vspace*{1ex}
     {{\it \submittedtext} \par}
@@ -379,7 +384,7 @@
    {\end{list}\mtcaddchapter}
 
 
-\usepackage[grey,utopia]{quotchap} 
+\usepackage[grey,utopia]{quotchap}
 	% To put nice quotes at the beginning of the chapters
 
 \usepackage[nottoc]{tocbibind}

@@ -3,18 +3,27 @@
 ## thesis metadata ##
 #####################
 title: |
-  `oxforddown`: \
-  An Oxford University Thesis \
-  Template for R Markdown
-author: Author Name
-college: Your College
-degree: Doctor of Philosophy
-degreedate: Michaelmas 2018
+  Investigating the use of designer pentatricopeptide repeat proteins as molecular tools.
+author: |
+        Brady Addison Johnston \
+        \small Bachelor of Science (Hons)
+supervisors: | 
+  \large
+  Supervisors: \linebreak
+  Prof Charlie Bond \linebreak
+  Dr. Jason Schmidberger \linebreak 
+  Prof Ian Small
+college: |
+        School of Molecular Sciences
+degree: | 
+        Doctor of Philosophy in Biochemistry
+degreedate: December 2020
 abstract: |
   `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = '\n  ')`
 acknowledgements: |
   `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`
-dedication: For Yihui Xie
+dedication: | 
+            To all the proteins I ever loved.
 abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with abbreviations
 
 #######################
@@ -26,7 +35,7 @@ bibliography-heading-in-pdf: Works Cited
 #####################
 ## PDF formatting  ##
 #####################
-abstractseparate: true  # include front page w/ abstract for examination schools?
+abstractseparate: false  # include front page w/ abstract for examination schools?
 bib-humanities: true   #set to true if you want in-text references formatted as author-year
 doi-in-bibliography: true #set to true if you want DOI's to be shown in the bibliography
 draft: true # add as DRAFT mark in the footer?

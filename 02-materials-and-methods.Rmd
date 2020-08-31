@@ -1,0 +1,55 @@
+---
+output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+  bookdown::word_document2: default
+  bookdown::html_document2: default
+documentclass: book
+bibliography: references.bib
+---
+
+```{block type='savequote', quote_author='(ref:cicero-quote)', include=knitr::is_latex_output()}
+Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+
+There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
+```
+(ref:cicero-quote) --- Cicero's *de Finibus Bonorum et Malorum*.
+
+<!-- 
+Notes for adding an opening quote in PDF output:
+i) add the reference for the quote with the chunk option quote_author="my author name",
+ii) include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex' means that these quotes are only included when output is latex (in HTML output, it would appear by the end of the previous page)
+iii) You can't use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the quote reference use a 'text reference': Create a named piece of text with '(ref:label-name) My text', then link to this in the chunk option with quote_author='(ref:label-name)'
+-->
+
+# Materials and Methods {#matmet}
+\minitoc
+
+## Chemicals
+
+## **E. coli** straings
+
+## Media and Buffers
+Some buffer conent is now stored here.
+
+## Molecular Biology Methods
+
+### Plasmid Constructs
+
+### Plasmid Transformations
+
+### Plasmid propagation and pufication
+
+### Amplified DNA via PCR
+
+### Restriction Enzyme Digests
+
+### DNA Gel Extraction
+
+### DNA Ligation
+
+### Sequencing
+
+## Protein Biochemical Methods
+
+### SDS PAGE Gel

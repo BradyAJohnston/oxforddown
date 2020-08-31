@@ -87,5 +87,5 @@ If you need to create your own additional chunk options, edit the file scripts/c
 -->
 
 
-```{r introduction, child = '_00-introduction.Rmd'}
+```{r introduction, child = '_01-introduction.Rmd'}
 ```

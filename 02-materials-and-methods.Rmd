@@ -8,6 +8,12 @@ documentclass: book
 bibliography: references.bib
 ---
 
+```{r, echo=FALSE}
+library(knitr)
+library(bookdown)
+```
+
+
 ```{block type='savequote', quote_author='(ref:cicero-quote)', include=knitr::is_latex_output()}
 Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
 
@@ -25,16 +31,61 @@ iii) You can't use markdown syntax inside chunk options, so if you want to e.g. 
 # Materials and Methods {#matmet}
 \minitoc
 
-## Chemicals
+Recipes for generic materials and methods are described in Sambrook *et al* are included in the Appendix.
 
-## **E. coli** straings
+Does the \@ref(fig:mtcarsplot) show up properly??
+
+## Chemicals
+What about a table of checicals? See in \@ref(tab:chemicaltable)
+
+Table:(#tab:chemicaltable) Now a caption here.
+
+|Name|Formula|
+|-------|----------|
+|Salt|NaCl|
+|Water|H2O|
+
+## *E. coli* strains
+
+Genomes for the used bacterial strains can be found in table \@ref(tab:bacteriatable).
+
+```{r bacteriatable,  echo=FALSE}
+df = data.frame(
+  name = c("bacA", "bacB"), 
+  genome = c("AAAAAA", "fjdskla;fjklds;a")
+)
+
+knitr::kable(df, format = "pandoc", caption = "Bacerial genomes that were used in this study, and their relevant qualities.")
+```
+
+But can I reference the info in Table \@ref(tab:extable)?????
+What about buffers in \@ref(media-and-buffers)
+
+```{r extable, echo=FALSE}
+knitr::kable(
+  head(mtcars[, 1:3], 5),
+  caption = 'A Tale of Two Tables.', format="pandoc"
+)
+```
+
 
 ## Media and Buffers
-Some buffer conent is now stored here.
+Some buffer content is now stored here.
 
 ## Molecular Biology Methods
+```{r mtcarsplot, fig.cap="Lots of information about cars, how weird is that!", fig.align='center'}
+plot(mtcars)
+```
 
 ### Plasmid Constructs
+
+#### pETM-11 Bacetial Expression Vector
+The pETM-11 vector contains a multiple cloning site (MCS) for restriction enzyme (RE) cloning of a gene, confers kanamycin resistance and contains a T7 promoter which allows for isopropyl $\beta$–D-1-thiogalactopyranoside (IPTG; Gold Biotechnology) induced expression of the inserted gene. pETM-11 also encodes a hexahistadine tag (polyHis-tag) followed by a Tobacco Etch Virus (TEV) protease cleavage site N-terminal to the protein of interest.
+
+#### pETM-20 Bacterial Expression Vector
+The pETM-20 vector contains a multiple cloning site (MCS) for restriction enzyme (RE) cloning of a gene, confers ampicillin resistance and contains a T7 promoter which allows for isopropyl $\beta$–D-1-thiogalactopyranoside (IPTG; Gold Biotechnology) induced expression of the inserted gene. pETM-11 also encodes thioredoxin followed by a hexahistadine tag (polyHis-tag) followed by a Tobacco Etch Virus (TEV) protease cleavage site N-terminal to the protein of interest.
+
+<!-- Incluce plasmid map -->
 
 ### Plasmid Transformations
 

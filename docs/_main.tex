@@ -332,22 +332,106 @@ have it, simply because it is pain\ldots{}
 
 \minitoc
 
+Recipes for generic materials and methods are described in Sambrook \emph{et al} are included in the Appendix.
+
+Does the \ref{fig:mtcarsplot} show up properly??
+
 \hypertarget{chemicals}{%
 \section{Chemicals}\label{chemicals}}
 
-\hypertarget{e.-coli-straings}{%
-\section{\texorpdfstring{\textbf{E. coli} straings}{E. coli straings}}\label{e.-coli-straings}}
+What about a table of checicals? See in \ref{tab:chemicaltable}
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{\label{tab:chemicaltable} Now a caption here.}\tabularnewline
+\toprule
+Name & Formula\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Name & Formula\tabularnewline
+\midrule
+\endhead
+Salt & NaCl\tabularnewline
+Water & H2O\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{e.-coli-strains}{%
+\section{\texorpdfstring{\emph{E. coli} strains}{E. coli strains}}\label{e.-coli-strains}}
+
+Genomes for the used bacterial strains can be found in table \ref{tab:bacteriatable}.
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{\label{tab:bacteriatable}Bacerial genomes that were used in this study, and their relevant qualities.}\tabularnewline
+\toprule
+name & genome\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+name & genome\tabularnewline
+\midrule
+\endhead
+bacA & AAAAAA\tabularnewline
+bacB & fjdskla;fjklds;a\tabularnewline
+\bottomrule
+\end{longtable}
+
+But can I reference the info in Table \ref{tab:extable}?????
+What about buffers in \ref{media-and-buffers}
+
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{\label{tab:extable}A Tale of Two Tables.}\tabularnewline
+\toprule
+& mpg & cyl & disp\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+& mpg & cyl & disp\tabularnewline
+\midrule
+\endhead
+Mazda RX4 & 21.0 & 6 & 160\tabularnewline
+Mazda RX4 Wag & 21.0 & 6 & 160\tabularnewline
+Datsun 710 & 22.8 & 4 & 108\tabularnewline
+Hornet 4 Drive & 21.4 & 6 & 258\tabularnewline
+Hornet Sportabout & 18.7 & 8 & 360\tabularnewline
+\bottomrule
+\end{longtable}
 
 \hypertarget{media-and-buffers}{%
 \section{Media and Buffers}\label{media-and-buffers}}
 
-Some buffer conent is now stored here.
+Some buffer content is now stored here.
 
 \hypertarget{molecular-biology-methods}{%
 \section{Molecular Biology Methods}\label{molecular-biology-methods}}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(mtcars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics{_main_files/figure-latex/mtcarsplot-1} 
+
+}
+
+\caption{Lots of information about cars, how weird is that!}\label{fig:mtcarsplot}
+\end{figure}
+
 \hypertarget{plasmid-constructs}{%
 \subsection{Plasmid Constructs}\label{plasmid-constructs}}
+
+\hypertarget{petm-11-bacetial-expression-vector}{%
+\subsubsection{pETM-11 Bacetial Expression Vector}\label{petm-11-bacetial-expression-vector}}
+
+The pETM-11 vector contains a multiple cloning site (MCS) for restriction enzyme (RE) cloning of a gene, confers kanamycin resistance and contains a T7 promoter which allows for isopropyl \(\beta\)--D-1-thiogalactopyranoside (IPTG; Gold Biotechnology) induced expression of the inserted gene. pETM-11 also encodes a hexahistadine tag (polyHis-tag) followed by a Tobacco Etch Virus (TEV) protease cleavage site N-terminal to the protein of interest.
+
+\hypertarget{petm-20-bacterial-expression-vector}{%
+\subsubsection{pETM-20 Bacterial Expression Vector}\label{petm-20-bacterial-expression-vector}}
+
+The pETM-20 vector contains a multiple cloning site (MCS) for restriction enzyme (RE) cloning of a gene, confers ampicillin resistance and contains a T7 promoter which allows for isopropyl \(\beta\)--D-1-thiogalactopyranoside (IPTG; Gold Biotechnology) induced expression of the inserted gene. pETM-11 also encodes thioredoxin followed by a hexahistadine tag (polyHis-tag) followed by a Tobacco Etch Virus (TEV) protease cleavage site N-terminal to the protein of interest.
 
 \hypertarget{plasmid-transformations}{%
 \subsection{Plasmid Transformations}\label{plasmid-transformations}}

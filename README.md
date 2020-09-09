@@ -1,7 +1,7 @@
 Table of Contents
 =================
 
-   * [Oxforddown](#oxforddown)
+   * [UWAdown](#UWAdown)
       * [Tutorials and examples](#tutorials-and-examples)
       * [Examples of theses written with oxforddown](#examples-of-theses-written-with-oxforddown)
       * [How to cite](#how-to-cite)
@@ -20,8 +20,10 @@ Table of Contents
       * [Gotchas](#gotchas)
       * [Output formats](#output-formats)
 
-# Oxforddown
-A template for writing an Oxford University thesis in R Markdown.
+# UWAdown
+A template for writing a nice-looking UWA university thesis in R Markdown.
+
+Adapted heavilty from the [oxfordown](https://github.com/ulyngs/oxforddown) template.
 
 ## Tutorials and examples
 See the video tutorials for how to use the template:
